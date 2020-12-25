@@ -5,9 +5,8 @@
     <div class="container">
         <h4>Dostępne modyfikacje:</h4>
         {% for key, value in effects.items %}
-            <label>
-                <input type="checkbox" class="radio" value="1" name="{{ value.value.0 }}[1][]" />{{ value.value.0 }}
-            </label>
+            <input type="radio" name="available_effect" id="{{ value.value.0 }}" value="{{ value.value.0 }}"/>
+            <label for="{{ value.value.0 }}">{{ value.value.0 }}</label>
             </br>
         {% endfor %}
     </div>
