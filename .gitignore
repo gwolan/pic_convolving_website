@@ -1,3 +1,6 @@
+#various file formats
+*.txt
+
 #exceptions
-README.txt
+!README.txt
 .idea
