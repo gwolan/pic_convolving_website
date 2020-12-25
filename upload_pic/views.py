@@ -1,6 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .src.EffectType import EffectType
 
 
 def upload_pic(request):
-    return HttpResponse('<h1>Test</h1>')
+    context = {
+        'title': 'Witaj!',
+        'effects': EffectType.__members__,
+    }
+
+    return render(request, 'upload_pic/homepage.html', context)

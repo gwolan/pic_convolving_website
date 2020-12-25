@@ -1,0 +1,14 @@
+{% extends "upload_pic/base.html" %}
+{% block content %}
+    <h1>Test from template with "base.html" extension</h1>
+
+    <div class="container">
+        <h4>Dostępne modyfikacje:</h4>
+        {% for key, value in effects.items %}
+            <label>
+                <input type="checkbox" class="radio" value="1" name="{{ value.value.0 }}[1][]" />{{ value.value.0 }}
+            </label>
+            </br>
+        {% endfor %}
+    </div>
+{% endblock content %}
