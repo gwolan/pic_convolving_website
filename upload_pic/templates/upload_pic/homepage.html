@@ -8,6 +8,9 @@
             <h3>{{ effect_type }}</h3>
 
             <img src="{{ image_url }}">
+            <form method="GET">
+                <input type="submit" value="Wróć">
+            </form>
         {% else %}
             <h1>Przetwórz swój obraz</h1>
 
@@ -20,7 +23,7 @@
                 {% for radio in effects_radio_list %}
                     {{ radio|crispy }}
                 {% endfor %}
-                <input type="submit" value="Wyślij" name="submit">
+                <input type="submit" value="Przetwórz obraz" name="submit">
             </form>
         {% endif %}
     </div>
