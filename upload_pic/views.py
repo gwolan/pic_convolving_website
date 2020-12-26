@@ -3,6 +3,10 @@ from django.core.files.storage import FileSystemStorage
 from .src.ChooseEffectRadioForm import radio_list
 from .src.UploadImageForm import UploadImageForm
 from .src.EffectType import EffectType
+from .src.FileRemover import FileRemover
+
+
+file_remover = FileRemover()
 
 
 def upload_pic(request):
@@ -12,14 +16,17 @@ def upload_pic(request):
         uploaded_image = request.FILES['image_field']
 
         file_name = file_storage.save(uploaded_image.name, uploaded_image)
+        file_url = file_storage.url(file_name)
+        file_path = file_storage.path(file_name)
 
         # modify file
 
         context = {
             'title': 'Wynik',
-            'image_url': file_storage.url(file_name),
+            'image_url': file_url,
             'effect_type': EffectType.__members__[chosen_option].value[0],
         }
+        file_remover.paths.put(file_path)
     else:
         context = {
             'title': 'Witaj!',
