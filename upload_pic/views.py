@@ -11,6 +11,12 @@ def upload_pic(request):
     }
 
     if request.method == 'POST':
-        return redirect('result_page')
-    else:
-        return render(request, 'upload_pic/homepage.html', context)
+        print()
+        print(request.POST)
+        print()
+    return render(request, 'upload_pic/homepage.html', context)
+    #
+    # if request.method == 'POST':
+    #     return redirect('result_page')
+    # else:
+    #     return render(request, 'upload_pic/homepage.html', context)

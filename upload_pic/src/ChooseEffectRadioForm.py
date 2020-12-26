@@ -10,7 +10,9 @@ class ChooseEffectRadioForm(forms.Form):
                                                         required=True,
                                                         widget=forms.CheckboxInput(attrs={
                                                             "type": "radio",
-                                                            "id": effect_type}))
+                                                            "id": effect_type,
+                                                            "value": effect_type
+                                                        }))
 
 
 radio_list = list()
