@@ -1,19 +1,27 @@
 {% extends "upload_pic/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <h1>Przetwórz swój obraz</h1>
-
     <div class="container">
-        <form method="POST">
-            {% csrf_token %}
-            <h4>Wybierz obraz do przekształcenia:</h4>
-            {{ upload_image_form|crispy }}
+        {% if image_url %}
+            <h1>Wynik!</h1>
 
-            <h4>Dostępne modyfikacje:</h4>
-            {% for radio in effects_radio_list %}
-                {{ radio|crispy }}
-            {% endfor %}
-            <input type="submit" value="Wyślij" name="submit">
-        </form>
+            <h3>{{ effect_type }}</h3>
+
+            <img src="{{ image_url }}">
+        {% else %}
+            <h1>Przetwórz swój obraz</h1>
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h4>Wybierz obraz do przekształcenia:</h4>
+                {{ upload_image_form|crispy }}
+
+                <h4>Dostępne modyfikacje:</h4>
+                {% for radio in effects_radio_list %}
+                    {{ radio|crispy }}
+                {% endfor %}
+                <input type="submit" value="Wyślij" name="submit">
+            </form>
+        {% endif %}
     </div>
 {% endblock content %}

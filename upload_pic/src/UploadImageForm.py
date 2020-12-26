@@ -2,4 +2,4 @@ from django import forms
 
 
 class UploadImageForm(forms.Form):
-    image_field = forms.ImageField(label="", required=False)
+    image_field = forms.ImageField(label="", required=True)
