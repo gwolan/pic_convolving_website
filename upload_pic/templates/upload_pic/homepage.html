@@ -3,7 +3,8 @@
     <h1>Przetwórz swój obraz</h1>
 
     <div class="container">
-        <form method="post">
+        <form method="POST">
+            {% csrf_token %}
             <h4>Wybierz obraz do przekształcenia:</h4>
             <input type="file" name="pic_upload" id="pic_upload">
             <input type="submit" value="Wyślij" name="submit">
