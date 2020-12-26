@@ -1,13 +1,19 @@
 {% extends "upload_pic/base.html" %}
 {% block content %}
-    <h1>Test from template with "base.html" extension</h1>
+    <h1>Przetwórz swój obraz</h1>
 
     <div class="container">
-        <h4>Dostępne modyfikacje:</h4>
-        {% for key, value in effects.items %}
-            <input type="radio" name="available_effect" id="{{ value.value.0 }}" value="{{ value.value.0 }}"/>
-            <label for="{{ value.value.0 }}">{{ value.value.0 }}</label>
-            </br>
-        {% endfor %}
+        <form method="post">
+            <h4>Wybierz obraz do przekształcenia:</h4>
+            <input type="file" name="pic_upload" id="pic_upload">
+            <input type="submit" value="Wyślij" name="submit">
+
+            <h4>Dostępne modyfikacje:</h4>
+            {% for key, value in effects.items %}
+                <input type="radio" name="available_effect" id="key" value="{{ value.value.0 }}"{% if value.value.1 == first_checkbox_value %}{{ checked }}{% endif %}/>
+                <label for="key">{{ value.value.0 }}</label>
+                </br>
+            {% endfor %}
+        </form>
     </div>
 {% endblock content %}
