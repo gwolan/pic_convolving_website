@@ -1,15 +1,13 @@
 from django.shortcuts import render, redirect
-from .src.EffectType import EffectType
+from .src.ChooseEffectRadioForm import radio_list
+from .src.UploadImageForm import UploadImageForm
 
 
 def upload_pic(request):
-    supported_effects = list(EffectType.__members__.keys())
-
     context = {
         'title': 'Witaj!',
-        'effects': EffectType.__members__,
-        'checked': ' checked',
-        'first_checkbox_value': EffectType.__members__[supported_effects[0]].value[1],
+        'upload_image_form': UploadImageForm(),
+        'effects_radio_list': radio_list,
     }
 
     if request.method == 'POST':
