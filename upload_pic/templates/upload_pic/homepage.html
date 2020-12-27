@@ -12,34 +12,47 @@
                 <input type="submit" value="Wróć">
             </form>
         {% else %}
-            <h1>Przetwórz swój obraz</h1>
-
-            {% if messages %}
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            {% endif %}
-
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <h4>Wybierz obraz do przekształcenia:</h4>
-                {{ upload_image_form|crispy }}
-
-                <h4>Dostępne modyfikacje:</h4>
-                {% for radio in effects_radio_list %}
-                    {{ radio|crispy }}
-                {% endfor %}
-
-                <h7>Wspierane formaty: </h7>
-                {% for type in supported_types %}
-                    {% if forloop.last %}
-                        {{ type }}
-                    {% else %}
-                        {{ type }},
+                <article class="content-section">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-danger">{{ message }}</div>
+                        {% endfor %}
                     {% endif %}
-                {% endfor %}
+
+                    <div class="media-body">
+                        <div class="homepage-title-section">
+                            <h1 class="homepage-title bg-steel nav-link" align="center">Przetwórz swój obraz</h1>
+                        </div>
+
+                        <div class="form-section">
+                            <h4>Wybierz obraz do przekształcenia:</h4>
+                            <div class="btn-link bg-steel nav-item nav-link">{{ upload_image_form|crispy }}</div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4>Dostępne modyfikacje:</h4>
+                                {% for radio in effects_radio_list %}
+                                    {{ radio|crispy }}
+                                {% endfor %}
+                        </div>
+
+                        <div class="supported-formats">
+                            <small class="text-muted">Wspierane formaty:
+                                {% for type in supported_types %}
+                                    {% if forloop.last %}
+                                        {{ type }}
+                                    {% else %}
+                                        {{ type }},
+                                    {% endif %}
+                                {% endfor %}
+                            </small>
+                        </div>
+                        <button class="btn-link bg-steel nav-link" type="submit" name="submit" href="{% url 'upload_pic_homepage' %}">Przetwórz obraz</button>
+                    </div>
+                </article>
                 <br>
-                <input type="submit" value="Przetwórz obraz" name="submit">
             </form>
         {% endif %}
     </div>
