@@ -14,6 +14,12 @@
         {% else %}
             <h1>Przetwórz swój obraz</h1>
 
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <h4>Wybierz obraz do przekształcenia:</h4>
@@ -23,6 +29,16 @@
                 {% for radio in effects_radio_list %}
                     {{ radio|crispy }}
                 {% endfor %}
+
+                <h7>Wspierane formaty: </h7>
+                {% for type in supported_types %}
+                    {% if forloop.last %}
+                        {{ type }}
+                    {% else %}
+                        {{ type }},
+                    {% endif %}
+                {% endfor %}
+                <br>
                 <input type="submit" value="Przetwórz obraz" name="submit">
             </form>
         {% endif %}
