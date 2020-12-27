@@ -3,14 +3,25 @@
 {% block content %}
     <div class="container">
         {% if image_url %}
-            <h1>Wynik!</h1>
+            <article class="content-section">
+                <div class="media-body">
+                    <div class="result-title-section">
+                        <h1 class="homepage-title bg-steel nav-link" align="center">Wynik!</h1>
+                    </div>
 
-            <h3>{{ effect_type }}</h3>
+                    <div class="form-section">
+                        <h3>Wykonany efekt: {{ effect_type }}</h3>
+                    </div>
 
-            <img src="{{ image_url }}">
-            <form method="GET">
-                <input type="submit" value="Wróć">
-            </form>
+                    <div class="form-section result-img" align="center">
+                        <img id="image" width="720" src="{{ image_url }}">
+                    </div>
+
+                    <form method="GET">
+                        <button class="btn-link bg-steel nav-link" type="submit" name="submit" href="{% url 'upload_pic_homepage' %}">Wróć</button>
+                    </form>
+                </div>
+            </article>
         {% else %}
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -52,7 +63,6 @@
                         <button class="btn-link bg-steel nav-link" type="submit" name="submit" href="{% url 'upload_pic_homepage' %}">Przetwórz obraz</button>
                     </div>
                 </article>
-                <br>
             </form>
         {% endif %}
     </div>
