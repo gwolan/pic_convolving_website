@@ -41,20 +41,20 @@ ul {
 }
 
 .btn-link {
-    border: 1px solid #5f788a;
-    border-radius: 3px;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: inherit;
+  border: 1px solid #5f788a;
+  border-radius: 3px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .btn-link:hover {
-    border: 1px solid #5f788a;
-    border-radius: 3px;
-    background-color: #5f8999;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: inherit;
+  border: 1px solid #5f788a;
+  border-radius: 3px;
+  background-color: #5f8999;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .homepage-title {
@@ -89,6 +89,10 @@ a.article-title:hover {
   margin-bottom: 10px;
   margin-top: 10px;
   border-bottom: 1px solid #e3e3e3
+}
+
+img {
+  max-width: 100%;
 }
 
 .supported-formats {
