@@ -1,7 +1,10 @@
 #various file formats
 *.txt
 
-#exceptions
-!README.txt
+#various files
 .idea
 media/
+__pycache__
+
+#exceptions
+!README.txt
