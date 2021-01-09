@@ -1,6 +1,9 @@
 from enum import Enum
 
 
+supported_types = ['jpeg', 'png', 'tga', 'bmp']
+
+
 class EffectType(Enum):
     BLUR = ('Rozmycie', 1)
     MOTION_BLUR = ('Rozmycie w ruchu', 2)

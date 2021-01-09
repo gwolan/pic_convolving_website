@@ -1,4 +1,5 @@
 import sys
+from .Config import supported_types
 from PIL.Image import open
 from PIL.Image import UnidentifiedImageError
 
@@ -6,7 +7,6 @@ from PIL.Image import UnidentifiedImageError
 class ImageValidator:
     image_open = False
     error = None
-    supported_types = ['jpeg', 'png', 'tga', 'bmp']
 
     def __init__(self, image_path):
         self.image_path = image_path
@@ -49,7 +49,7 @@ class ImageValidator:
         self.open_image()
 
         if self.image_open:
-            for supported_type in self.supported_types:
+            for supported_type in supported_types:
                 if supported_type == self.image.format.lower():
                     self.close_image()
                     return True

@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.contrib import messages
 from .src.ChooseEffectRadioForm import radio_list
 from .src.UploadImageForm import UploadImageForm
-from .src.EffectType import EffectType
+from .src.Config import EffectType
+from .src.Config import supported_types
 from .src.FileRemover import FileRemover
 from .src.ImageData import ImageData
 from .src.ImageValidator import ImageValidator
@@ -17,7 +18,7 @@ def get_homepage_context():
     return {'title': 'Witaj!',
             'upload_image_form': UploadImageForm(),
             'effects_radio_list': radio_list,
-            'supported_types': ImageValidator.supported_types, }
+            'supported_types': supported_types, }
 
 
 def get_result_context(image_url, effect_type):

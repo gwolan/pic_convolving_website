@@ -1,5 +1,5 @@
 from django import forms
-from .EffectType import EffectType
+from .Config import EffectType
 
 
 class ChooseEffectRadioForm(forms.Form):
