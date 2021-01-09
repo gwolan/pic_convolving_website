@@ -6,7 +6,7 @@ from PIL.Image import UnidentifiedImageError
 class ImageValidator:
     image_open = False
     error = None
-    supported_types = ['jpeg', 'png']
+    supported_types = ['jpeg', 'png', 'tga', 'bmp']
 
     def __init__(self, image_path):
         self.image_path = image_path

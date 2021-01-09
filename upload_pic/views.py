@@ -6,6 +6,8 @@ from .src.EffectType import EffectType
 from .src.FileRemover import FileRemover
 from .src.ImageData import ImageData
 from .src.ImageValidator import ImageValidator
+import subprocess
+import pic_convolving_website.settings
 
 
 file_remover = FileRemover()
@@ -31,7 +33,7 @@ def upload_pic(request):
         chosen_option = request.POST['pref-effect']
 
         if image_validator.is_image_valid():
-            # modify file
+            # process_result = subprocess.run([pic_convolving_website.settings.MEDIA_ROOT + str("\\bin.exe"), "-p", image_data.image_path, "-f", image_validator.image.format.lower(), "-e", chosen_option])
             context = get_result_context(image_data.image_url, EffectType.__members__[chosen_option].value[0])
         else:
             messages.error(request, f'Wystąpił błąd: ' + image_validator.error)
