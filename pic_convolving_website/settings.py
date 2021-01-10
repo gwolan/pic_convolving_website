@@ -10,23 +10,26 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import os
+import os, json
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+with open(os.path.join(BASE_DIR, 'website_venv/etc/config.json')) as config_file:
+    config = json.load(config_file)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '36rez*6&$dkl*z)h6@*ht6g7%x9^s54bhc)4@$=4r6&j%47n68'
+SECRET_KEY = config["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [config["ALLOWED_HOSTS"]]
 
 
 # Application definition
@@ -120,15 +123,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = config["STATIC_URL"]
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, config["STATICFILES_DIRS"])
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, config["MEDIA_ROOT"])
 MEDIA_URL = '/media/'
 
-FILE_UPLOAD_TEMP_DIR = os.path.join(BASE_DIR, 'website_venv/tmp')
+FILE_UPLOAD_TEMP_DIR = os.path.join(BASE_DIR, config["TMP_DIR"])
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
