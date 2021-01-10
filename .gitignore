@@ -5,6 +5,9 @@
 .idea
 media/
 __pycache__
+website_venv/
+static/admin/
+source_venv.sh
 
 #exceptions
 !README.txt
