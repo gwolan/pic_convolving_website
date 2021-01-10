@@ -21,7 +21,7 @@ class EffectType(Enum):
     MOTION_BLUR = ('Rozmycie w ruchu', 2)
     EDGE_DETECTION = ('Wykrywanie krawędzi', 3)
     SHARPEN = ('Wyostrzenie', 4)
-    EMBOSS = ('Uwypuklenie', 5)
+    EMBOSS = ('Ukazanie wypukłości', 5)
 
     def __init__(self, effect_name, effect_type):
         self.effect_name = effect_name
