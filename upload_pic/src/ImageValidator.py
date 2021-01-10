@@ -24,6 +24,15 @@ class ImageValidator:
             file_name = path.split('/')[-1]
         return text + '\'' + file_name + '\''
 
+    def get_file_name_from_exception(self, exception):
+        text, path, blank = str(exception).split('\'')
+
+        if sys.platform == 'win32':
+            file_name = path.split('\\')[-1]
+        else:
+            file_name = path.split('/')[-1]
+        return '\'' + file_name + '\''
+
     def open_image(self):
         try:
             self.image = open(fp=self.image_path, mode='r')
@@ -33,7 +42,7 @@ class ImageValidator:
             self.error = 'ImageValidator exception FileNotFoundError: ' + self.get_error_msg(fnfe)
         except UnidentifiedImageError as uie:
             self.image_open = False
-            self.error = 'ImageValidator exception UnidentifiedImageError: ' + self.get_error_msg(uie)
+            self.error = 'Format pliku nie jest wspierany: ' + self.get_file_name_from_exception(uie)
         except TypeError as te:
             self.image_open = False
             self.error = 'ImageValidator exception TypeError: ' + self.get_error_msg(te)

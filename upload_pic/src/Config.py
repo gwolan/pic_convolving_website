@@ -13,6 +13,12 @@ MAX_FILE_SIZE_BYTES = 10485760
 MAX_FILE_SIZE_MB = 10
 
 
+engine_error_codes = {
+    1: "Błąd serwera. Nie udało się wczytać pliku",
+    2: "Błąd serwera. Nie udało się zapisać przetworzonego pliku"
+}
+
+
 supported_types = ['jpeg', 'png', 'tga', 'bmp']
 
 
