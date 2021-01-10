@@ -31,9 +31,6 @@ def get_result_context(image_url, effect_type):
 
 def upload_pic(request):
     if request.method == 'POST':
-        print()
-        print(request.FILES['image_field'].__dict__)
-        print()
         image_data = ImageData(request.FILES['image_field'])
         image_validator = ImageValidator(image_data.image_path, image_data.image_size)
         chosen_option = request.POST['pref-effect']
