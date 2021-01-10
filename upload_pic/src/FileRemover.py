@@ -9,7 +9,7 @@ def remove_images(paths):
 
     while True:
         path = paths.get(block=True)
-        time.sleep(5)
+        time.sleep(60)
 
         if path:
             file_storage.delete(path)
