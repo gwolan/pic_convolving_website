@@ -50,14 +50,16 @@
                         </div>
 
                         <div class="supported-formats">
-                            <small class="text-muted">Wspierane formaty:
+                            <small class="text-muted">
+                                Wspierane formaty:
                                 {% for type in supported_types %}
                                     {% if forloop.last %}
                                         {{ type }}
                                     {% else %}
                                         {{ type }},
                                     {% endif %}
-                                {% endfor %}
+                                {% endfor %}<br>
+                                Maksymalny rozmiar pliku: {{ max_file_upload }}MB
                             </small>
                         </div>
                         <button class="btn-link bg-steel nav-link" type="submit" name="submit" href="{% url 'upload_pic_homepage' %}">Przetwórz obraz</button>
