@@ -33,7 +33,7 @@ def get_result_context(image_url, effect_type):
 def modify_image(request, image_validator, image_data, chosen_option):
     if image_validator.is_image_valid():
         process_result = subprocess.run(
-            [pic_convolving_website.settings.MEDIA_ROOT + str("\\bin"), "-p", image_data.image_path,
+            [pic_convolving_website.settings.MEDIA_ROOT + str("/bin"), "-p", image_data.image_path,
                                                                         "-f", image_validator.image.format.lower(),
                                                                         "-e", chosen_option])
 
