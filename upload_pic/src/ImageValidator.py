@@ -4,15 +4,16 @@ from .Config import MAX_FILE_SIZE_BYTES
 from .Config import MAX_FILE_SIZE_MB
 from PIL.Image import open
 from PIL.Image import UnidentifiedImageError
+from .ImageData import ImageData
 
 
 class ImageValidator:
     image_open = False
     error = None
 
-    def __init__(self, image_path, image_size):
-        self.image_path = image_path
-        self.image_size = image_size
+    def __init__(self, image_data):
+        self.image_path = image_data.image_path
+        self.image_size = image_data.image_size
         self.image = None
 
     def get_error_msg(self, exception):
@@ -58,17 +59,18 @@ class ImageValidator:
             self.image.close()
 
     def is_image_valid(self):
-        if self.image_size > MAX_FILE_SIZE_BYTES:
+        if self.image_size < MAX_FILE_SIZE_BYTES:
+            self.open_image()
+
+            if self.image_open:
+                for supported_type in supported_types:
+                    if supported_type == self.image.format.lower():
+                        self.close_image()
+                        return True
+
+                self.error = 'Format \'' + self.image.format.lower() + '\' nie jest wspierany.'
+                self.close_image()
+        else:
             self.error = "Rozmiar pliku przekracza dozwolone %sMB." % MAX_FILE_SIZE_MB
-            return False
 
-        self.open_image()
-
-        if self.image_open:
-            for supported_type in supported_types:
-                if supported_type == self.image.format.lower():
-                    self.close_image()
-                    return True
-            self.error = 'Format \'' + self.image.format.lower() + '\' nie jest wspierany.'
-            self.close_image()
         return False
