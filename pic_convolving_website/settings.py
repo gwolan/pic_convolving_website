@@ -130,7 +130,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, config["MEDIA_ROOT"])
-MEDIA_URL = '/media/'
+MEDIA_URL = config["MEDIA_URL"]
 
 FILE_UPLOAD_TEMP_DIR = os.path.join(BASE_DIR, config["TMP_DIR"])
 

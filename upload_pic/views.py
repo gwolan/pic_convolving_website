@@ -10,7 +10,7 @@ from .src.FileRemover import FileRemover
 from .src.ImageData import ImageData
 from .src.ImageValidator import ImageValidator
 import subprocess
-import pic_convolving_website.settings
+import pic_convolving_website.settings as settings
 
 
 file_remover = FileRemover()
@@ -33,9 +33,9 @@ def get_result_context(image_url, effect_type):
 def modify_image(request, image_validator, image_data, chosen_option):
     if image_validator.is_image_valid():
         process_result = subprocess.run(
-            [pic_convolving_website.settings.MEDIA_ROOT + str("/bin"), "-p", image_data.image_path,
-                                                                        "-f", image_validator.image.format.lower(),
-                                                                        "-e", chosen_option])
+            [settings.MEDIA_ROOT + str("/bin"), "-p", image_data.image_path,
+                                                "-f", image_validator.image.format.lower(),
+                                                "-e", chosen_option])
 
         if process_result.returncode == 0:
             return get_result_context(image_data.image_url, EffectType.__members__[chosen_option].value[0])
