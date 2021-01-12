@@ -27,7 +27,7 @@ with open(os.path.join(BASE_DIR, 'website_venv/etc/config.json')) as config_file
 SECRET_KEY = config["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [config["ALLOWED_HOSTS"]]
 
@@ -132,6 +132,10 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, config["MEDIA_ROOT"])
 MEDIA_URL = config["MEDIA_URL"]
 
-FILE_UPLOAD_TEMP_DIR = os.path.join(BASE_DIR, config["TMP_DIR"])
+# use in prodection mode
+FILE_UPLOAD_TEMP_DIR = "/tmp" # os.path.join(BASE_DIR, config["TMP_DIR"])
+
+# use only in debug
+# FILE_UPLOAD_TEMP_DIR = os.path.join(BASE_DIR, config["TMP_DIR"])
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
