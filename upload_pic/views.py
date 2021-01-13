@@ -56,7 +56,7 @@ def upload_pic(request):
     if request.method == 'POST':
         image_data = ImageData(request.FILES['image_field'])
         image_validator = ImageValidator(image_data)
-        chosen_option = request.POST['pref-effect']
+        chosen_option = request.POST['pref-effect'] if request.POST['pref-effect'] != 'tga' else 'jpeg'
 
         context = modify_image(request, image_validator, image_data, chosen_option)
     else:
