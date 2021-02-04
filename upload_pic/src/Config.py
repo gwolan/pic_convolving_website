@@ -23,7 +23,7 @@ file_life_time_secs = 60
 file_queue_supervisor_wait_time_secs = 2
 
 
-supported_types = ['jpeg', 'png', 'tga', 'bmp']
+supported_types = ['jpeg', 'png', 'bmp']
 
 
 class EffectType(Enum):
