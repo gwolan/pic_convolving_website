@@ -1,0 +1,22 @@
+{% extends "upload_pic/base.html" %}
+{% block content %}
+    <div class="container">
+        <article class="content-section">
+            <div class="media-body">
+                <div class="result-title-section">
+                    <h1 class="homepage-title bg-steel nav-link" align="center">O stronie</h1>
+                </div>
+
+                <div class="form-section"></div>
+
+                <div class="form-section" align="center">
+                    {{ text }}
+                </div>
+
+                <form method="GET">
+                    <button class="btn-link bg-steel nav-link" type="submit" name="back">Wróć</button>
+                </form>
+            </div>
+        </article>
+    </div>
+{% endblock content %}

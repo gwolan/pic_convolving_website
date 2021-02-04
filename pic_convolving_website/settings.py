@@ -36,6 +36,7 @@ ALLOWED_HOSTS = [config["ALLOWED_HOSTS"]]
 
 INSTALLED_APPS = [
     'upload_pic.apps.UploadPicConfig',
+    'about.apps.AboutConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',

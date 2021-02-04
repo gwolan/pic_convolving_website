@@ -18,10 +18,12 @@ from django.views.generic import RedirectView
 from django.urls import path, include, re_path
 from django.conf.urls.static import static
 from django.conf import settings
+from about import views as about_views
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', include('upload_pic.urls')),
+    path('about/', about_views.about, name='about_page'),
     re_path(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico')),
 ]
 
